@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ filename }} - Preview{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="p-4 border-b border-gray-200 bg-gray-50">
+        <div class="flex justify-between items-center">
+            <h2 class="text-lg font-medium text-gray-900">{{ filename }}</h2>
+            <a href="{{ url_for('download') }}" 
+               class="px-3 py-1 text-sm bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700">
+                Download Project
+            </a>
+        </div>
+    </div>
+    
+    <div class="p-0 overflow-hidden">
+        <pre class="m-0"><code class="language-{{ file_extension }}">{{ content|e }}</code></pre>
+    </div>
+</div>
+
+<script>
+// Apply syntax highlighting
+hljs.highlightAll();
+</script>
+{% endblock %}

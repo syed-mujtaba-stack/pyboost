@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+
+{% block title %}Generated Code - AI Code Generator{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Generated Code</h2>
+            <div class="space-x-2">
+                <a href="{{ url_for('download') }}" 
+                   class="px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700">
+                    Download Project (ZIP)
+                </a>
+                <a href="{{ url_for('index') }}" 
+                   class="px-4 py-2 border border-gray-300 font-medium rounded-md hover:bg-gray-50">
+                    New Project
+                </a>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm text-gray-600">
+                Successfully generated <span class="font-medium">{{ file_count }} files</span>.
+                Previewing: <span class="font-mono text-sm bg-gray-100 px-2 py-1 rounded">{{ preview_filename }}</span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="border-t border-gray-200">
+        <div class="flex">
+            <div class="w-1/4 border-r border-gray-200 bg-gray-50 file-tree p-4 overflow-y-auto">
+                <h3 class="font-medium text-gray-900 mb-3">Project Files</h3>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="#" class="text-blue-600 hover:underline">{{ preview_filename }}</a>
+                    </li>
+                    <!-- More files would be listed here in a real implementation -->
+                </ul>
+            </div>
+            
+            <div class="w-3/4">
+                <div class="p-0 overflow-hidden">
+                    <pre class="m-0"><code class="language-python code-block">{{ preview_content|e }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="p-4 bg-gray-50 border-t border-gray-200 text-sm text-gray-600">
+        <p>Tip: Review the generated code before using it in production. Make sure to test thoroughly.</p>
+    </div>
+</div>
+{% endblock %}
